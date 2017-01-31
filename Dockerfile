@@ -1,4 +1,8 @@
-FROM treeder/go-dind
+FROM golang:1.8
+
+# must have source.list created to build (not in repo)
+ADD sources.list /etc/apt/sources.list.d/cs-sources.list
+RUN apt-get update && apt-get install -y --force-yes libzmq5-dev libzookeeper-mt-dev
 
 ADD go.sh /scripts/
 ADD lib/* /scripts/lib/
@@ -6,5 +10,8 @@ ADD lib/* /scripts/lib/
 # Just for demo and having something here if the user doesn't pass it in
 ADD app.go /app/app.go
 WORKDIR /app
+
+ENV GOPATH="/app"
+ENV ARCHFLAGS="-arch x86_64"
 
 ENTRYPOINT ["sh", "/scripts/go.sh"]

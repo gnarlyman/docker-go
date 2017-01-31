@@ -2,3 +2,4 @@ vendor/
 /app
 static
 /static
+.idea

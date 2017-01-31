@@ -66,9 +66,9 @@ vendor () {
 }
 build () {
   # echo "build: $1 $2"
-  go build $1
-  cp app $2
-  chmod a+rwx $wd/app
+  go build -o $1
+  cp $1 $2
+  chmod a+rwx $wd/$1
 }
 
 case "$1" in
@@ -76,7 +76,8 @@ case "$1" in
       vendor $p $wd
       ;;
   build)  echo  "Building..."
-      build "-o app" $wd
+     name=`basename $wd`
+      build $name $wd
       ;;
   fmt)  echo  "Formatting..."
       cd $wd
