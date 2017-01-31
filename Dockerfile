@@ -11,7 +11,8 @@ ADD lib/* /scripts/lib/
 ADD app.go /app/app.go
 WORKDIR /app
 
-ENV GOPATH="/app"
+RUN mkdir /build
+ENV GOPATH="/go"
 ENV ARCHFLAGS="-arch x86_64"
 
 ENTRYPOINT ["sh", "/scripts/go.sh"]

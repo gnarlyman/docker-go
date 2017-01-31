@@ -33,12 +33,12 @@ fi
 
 # echo $PWD
 wd=$PWD
-defSrcPath="x/y/z"
+defSrcPath="/build"
 if [ -z "$SRCPATH" ]; then
     SRCPATH=$defSrcPath
 fi
 # echo "srcpath $SRCPATH ---"
-p=/go/src/$SRCPATH
+p=$SRCPATH
 mkdir -p $p
 # ls -al
 if [ "$(ls -A $wd)" ]
@@ -65,7 +65,7 @@ vendor () {
   #      cd $wd
 }
 build () {
-  # echo "build: $1 $2"
+  echo "build: $1 $2"
   go build -o $1
   cp $1 $2
   chmod a+rwx $wd/$1
