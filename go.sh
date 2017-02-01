@@ -79,6 +79,9 @@ case "$1" in
      name=`basename $wd`
       build $name $wd
       ;;
+  run) echo "Running..."
+      eval $2
+      ;;
   fmt)  echo  "Formatting..."
       cd $wd
       go fmt
