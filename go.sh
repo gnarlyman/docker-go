@@ -79,6 +79,9 @@ case "$1" in
      name=`basename $wd`
       build $name $wd
       ;;
+  test) echo "Testing..."
+      go test
+      ;;
   run) echo "Running..."
       eval $2
       ;;
